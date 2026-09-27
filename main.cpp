@@ -48,12 +48,17 @@ while (!quit) {
       break;
     
     case 4:
+      db.show();
       break;
     
     case 5:
+      db.save();
       break;
     
     case 6:
+      cout << "The session has been concluded.";
+      db.save();
+      quit = true;
       break;
     
     default:
