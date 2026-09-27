@@ -10,8 +10,7 @@ using namespace std;
 
       string Database::get(string key){
             if (data.find(key) == data.end()) {
-                  cout << "ERROR:The key cannot be found.";
-                  return;
+                  return "ERROR:The key cannot be found.";
             }
             return data[key];
       }
@@ -27,20 +26,21 @@ using namespace std;
 
       void Database::save(){
             ofstream file("database.txt");
-            
+
             if (!file) {
                   cout << "ERROR:The database file could not be accessed.";
                   return;
             }
             for (auto item : data) {
-                  file << item.first << " " << item.second << endl;
+                  file << item.first << " -> " << item.second << endl;
             }
             file.close();
             cout << "The database has been saved.";
       }
       void Database::load(){
             ifstream file("database.txt");
-            
+                string key;
+                string value;
             if (!file) {
                   cout << "ERROR:The database file could not be accessed.";
                   return;
@@ -49,7 +49,7 @@ using namespace std;
             while (file >> key >> value) {
                   data[key] = value;
             }
-            file.close();        
+            file.close();
       }
       void Database::show(){
             if (data.empty()) {
