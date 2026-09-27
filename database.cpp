@@ -41,12 +41,12 @@ using namespace std;
             ifstream file("database.txt");
                 string key;
                 string value;
+                string seperator;
             if (!file) {
-                  cout << "ERROR:The database file could not be accessed.";
                   return;
             }
 
-            while (file >> key >> value) {
+            while (file >> key >> seperator >> value) {
                   data[key] = value;
             }
             file.close();
