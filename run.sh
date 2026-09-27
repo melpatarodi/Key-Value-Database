@@ -1,4 +1,8 @@
 #!/bin/bash
 
 g++ main.cpp database.cpp -o main
-./main
+
+if [ $? -eq 0 ]; then
+    ./main
+    rm main
+fi
